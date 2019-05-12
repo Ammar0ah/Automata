@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
 import Statement from "./Models/Statement";
-import FullAutomata from "./Models/FullAutomata";
+// import FullAutomata from "./Models/FullAutomata";
+import PreAutomata from "./Models/PreAutomata";
+import NumberAutomata from "./Models/NumberAutomata";
 class App extends Component {
   state = {
-    Qs: [],
+    preQs: [],
+    numQs: [],
     Sigma: ["1", "0"],
     testInput: ""
   };
@@ -27,8 +30,8 @@ class App extends Component {
     newQ[index].isFinite = true;
     this.setState({ Qs: newQ });
   };
-  check = (current, index) => {
-    const Qs = this.state.Qs;
+  check = (current, index, Qs) => {
+    // const Qs = this.state.Qs;
     let item = Qs[index];
     console.log(Qs, "index:", index, "cur:", current);
     let result = [];
@@ -42,10 +45,10 @@ class App extends Component {
     else return -1;
   };
 
-  isBelong = (current, chain) => {
+  isBelong = (current, chain, Qs) => {
     console.log("current :", current, "\nchain :", chain);
-    const Qs = [...this.state.Qs];
-    console.log("IsFinite", Qs[current]);
+    // const Qs = [...this.state.Qs];
+    console.log(Qs);
     parseInt(current);
     if (current === -1) return false;
     else {
@@ -53,11 +56,11 @@ class App extends Component {
       else {
         let ch = String(chain);
         const c = ch.slice(1, ch.length);
-        const resArr = this.check(ch[0], current);
+        const resArr = this.check(ch[0], current, Qs);
         let finalRes = false;
         for (let index of resArr) {
-          console.log("index: ",index)
-          finalRes |= this.isBelong(index, c);
+          console.log("index: ", index);
+          finalRes |= this.isBelong(index, c, Qs);
         }
         return finalRes;
       }
@@ -79,17 +82,25 @@ class App extends Component {
     return res;
   };
   LoadState = () => {
-    let Qs = new FullAutomata();
-    Qs.GenerateAutomata();
+    // let Qs = new FullAutomata();
+    // Qs.GenerateAutomata();
+    // this.setState({
+    //   Qs: Qs.arr
+    // });
+    const preQs = new PreAutomata();
+    const numQs = new NumberAutomata();
+    preQs.GenerateAutomata();
+    numQs.GenerateAutomata(0);
     this.setState({
-      Qs: Qs.arr
+      preQs: [...preQs.arr],
+      numQs: [...numQs.arr]
     });
   };
 
   render() {
-    let St = this.state.Qs.map((_, index) => (
-      <Statement key={index} clicked={this.AddState} index={index} />
-    ));
+    // let St = this.state.preQs.map((_, index) => (
+    //   <Statement key={index} clicked={this.AddState} index={index} />
+    // ));
     return (
       <div>
         <button onClick={this.LoadState}>LOAD STATE</button>
@@ -103,10 +114,11 @@ class App extends Component {
         />
         <button
           onClick={() => {
-            let r = this.isBelong(0, this.state.testInput);
-            console.log(JSON.stringify(this.state.Qs));
+            let r =
+              this.isBelong(0, this.state.testInput, this.state.preQs) ||
+              this.isBelong(0, this.state.testInput, this.state.numQs);
+            console.log(JSON.stringify(this.state.Qs), this.state.testInput);
             alert("result: " + r);
-            // console.log(this.state.Qs);
           }}
         >
           Test

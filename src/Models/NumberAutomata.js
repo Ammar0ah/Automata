@@ -8,32 +8,33 @@ class NumberAutomata {
 
   GenerateAutomata = index => {
     //Generating q0
-    this.Q0.addq("+", index);
-    this.Q0.addq("-", index);
-    this.Q0.addq(".", index + 2);
-    this.addNumbersToQ(this.Q0, index + 1);
+    this.Q0.addq("+", index + 1);
+    this.Q0.addq("-", index + 1);
+    this.Q0.addq(".", index + 3);
+    this.addNumbersToQ(this.Q0, index + 2);
+    this.arr.push(this.Q0);
 
     //Gereating q1
     let q = new Q();
-    this.addNumbersToQ(q, index + 1);
+    this.addNumbersToQ(q, index + 2);
     this.arr.push(q);
 
     //Gereating q2
     q = new Q();
-    this.addNumbersToQ(q, index + 1);
-    q.addq(".", index + 1);
+    this.addNumbersToQ(q, index + 2);
+    q.addq(".", index + 2);
     q.isFinite = true;
     this.arr.push(q);
     console.log(this.arr);
 
     //Gereating q3
     q = new Q();
-    this.addNumbersToQ(q, index + 3);
+    this.addNumbersToQ(q, index + 4);
     this.arr.push(q);
 
     //Gereating q4
     q = new Q();
-    this.addNumbersToQ(q, index + 3);
+    this.addNumbersToQ(q, index + 4);
     q.isFinite = true;
     this.arr.push(q);
   };

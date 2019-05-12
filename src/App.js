@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-// import Posts from "./components/Posts";
-// import Postform from "./components/Postform";
-// import { Provider } from "react-redux";
-// import store from "./store";
 import Statement from "./Models/Statement";
-import { isArray } from "util";
+import FullAutomata from "./Models/FullAutomata";
 class App extends Component {
   state = {
-    Qs: [{ q: [], isFinite: false }],
-    Sigma: ["1", "2"],
+    Qs: [],
+    Sigma: ["1", "0"],
     testInput: ""
   };
   AddQs = () => {
@@ -32,38 +28,61 @@ class App extends Component {
     this.setState({ Qs: newQ });
   };
   check = (current, index) => {
-    if (isArray(index)) {
-      index = parseInt(index[0]);
-    }
     const Qs = this.state.Qs;
     let item = Qs[index];
     console.log(item, Qs, "index:", index, "cur:", current);
-    let result = item.q.map(koko => {
-      if (koko.key === current) return koko.value;
+    let result = [];
+    item.q.forEach(el => {
+      if (el.key === current) {
+        result.push(el.value);
+      }
     });
-    if (isArray(result)) {
-      result = parseInt(result);
-    }
-    console.log("res", result);
+    // console.log("res", result, "\n", parseInt(result));
     if (result) return result;
     else return -1;
   };
-  isBelong = (current, chain) => {
-    const Qs = this.state.Qs;
-    parseInt(current);
-    if (chain.length === 0) return Qs[current].isFinite;
-    let ch = String(chain);
-    console.log("ch", ch[0]);
 
+  isBelong = (current, chain) => {
+    console.log("current :", current, "\nchain :", chain);
+    const Qs = [...this.state.Qs];
+    console.log("IsFinite", Qs[current]);
+    parseInt(current);
     if (current === -1) return false;
     else {
-      const c = ch.slice(1, ch.length);
-      this.isBelong(this.check(ch[0], current), c);
+      if (chain.length === 0) return Qs[current].isFinite;
+      else {
+        let ch = String(chain);
+        const c = ch.slice(1, ch.length);
+        const resArr = this.check(ch[0], current);
+        let finalRes = false;
+        for (let index of resArr) {
+          finalRes |= this.isBelong(index, c);
+        }
+        return finalRes;
+      }
     }
   };
 
   inputValueChanged = event => {
     this.setState({ inputValue: event.target.value });
+  };
+  checkifExist = e => {
+    let S = String(e.target.value);
+    let res = true;
+    for (let c in S) {
+      console.log(S[c]);
+    }
+    // S.forEach(el => {
+    //   if (!this.state.Sigma.includes(el)) res = false;
+    // });
+    return res;
+  };
+  LoadState = () => {
+    let Qs = new FullAutomata();
+    Qs.GenerateAutomata();
+    this.setState({
+      Qs: Qs.arr
+    });
   };
 
   render() {
@@ -72,30 +91,26 @@ class App extends Component {
     ));
     return (
       <div>
-        {St}
+        <button onClick={this.LoadState}>LOAD STATE</button>
+        {/* {St} */}
         <button onClick={this.AddQs}>ADD NEW QS</button>
         <input
           value={this.state.testInput}
-          onChange={e => this.setState({ testInput: e.currentTarget.value })}
+          onChange={e => {
+            this.setState({ testInput: e.currentTarget.value });
+          }}
         />
         <button
           onClick={() => {
-            let result = this.isBelong(0, this.state.testInput);
-            alert("result: " + result);
+            let r = this.isBelong(0, this.state.testInput);
+            console.log(JSON.stringify(this.state.Qs));
+            alert("result: " + r);
+            console.log(this.state.Qs);
           }}
         >
           Test
         </button>
       </div>
-
-      // <Provider store = {store}>
-
-      // <main className="App">
-      //     <Postform/>
-
-      //     <Posts/>
-      // </main>
-      // </Provider>
     );
   }
 }

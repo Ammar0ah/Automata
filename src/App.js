@@ -30,7 +30,7 @@ class App extends Component {
   check = (current, index) => {
     const Qs = this.state.Qs;
     let item = Qs[index];
-    console.log(item, Qs, "index:", index, "cur:", current);
+    console.log(Qs, "index:", index, "cur:", current);
     let result = [];
     item.q.forEach(el => {
       if (el.key === current) {
@@ -56,6 +56,7 @@ class App extends Component {
         const resArr = this.check(ch[0], current);
         let finalRes = false;
         for (let index of resArr) {
+          console.log("index: ",index)
           finalRes |= this.isBelong(index, c);
         }
         return finalRes;
@@ -105,7 +106,7 @@ class App extends Component {
             let r = this.isBelong(0, this.state.testInput);
             console.log(JSON.stringify(this.state.Qs));
             alert("result: " + r);
-            console.log(this.state.Qs);
+            // console.log(this.state.Qs);
           }}
         >
           Test

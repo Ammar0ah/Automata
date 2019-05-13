@@ -4,6 +4,7 @@ import Statement from "./Models/Statement";
 import PreAutomata from "./Models/PreAutomata";
 import NumberAutomata from "./Models/NumberAutomata";
 import commentAutomata from "./Models/commentAutomata";
+import VariableAutomata from "./Models/VariableAutomata";
 import Q from "./Models/Q";
 class App extends Component {
   state = {
@@ -85,14 +86,17 @@ class App extends Component {
     const preQs = new PreAutomata();
     const numQs = new NumberAutomata();
     const comQs = new commentAutomata();
+    const varQs = new VariableAutomata();
     preQs.GenerateAutomata();
     numQs.GenerateAutomata(0);
     comQs.GenerateAutomata(0);
+    varQs.GenerateAutomata(0);
     preQs.arr[0].q = [...preQs.arr[0].q, ...Q0.q];
     this.setState({
       preQs: [...preQs.arr],
       numQs: [...numQs.arr],
-      comQs: [...comQs.arr]
+      comQs: [...comQs.arr],
+      varQs: [...varQs.arr]
     });
   };
 
@@ -126,9 +130,12 @@ class App extends Component {
                 r;
               console.log(JSON.stringify(this.state.Qs), this.state.testInput);
             }
+            console.log("11  ", this.state.testInput);
             r =
               this.isBelong(0, this.state.testInput.trim(), this.state.comQs) ||
+              this.isBelong(0, this.state.testInput, this.state.varQs) ||
               r;
+
             alert("result: " + r);
           }}
         >

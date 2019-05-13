@@ -19,9 +19,9 @@ class VariableAutomata {
     this.PreAutomata.exportToState();
     this.arr = this.PreAutomata.arr;
     this.arr.map(el => {
-      if (el.isFinite) el.push({ key: " ", value: index + this.arr.length });
+      if (el.isFinite) el.q.push({ key: " ", value: index + this.arr.length });
     });
-    let q = new Q();
+    q = new Q();
     this.addallCharToQ(q, index + this.arr.length + 1);
     this.arr.push(q);
     q = new Q();
@@ -33,7 +33,7 @@ class VariableAutomata {
       if (el.isFinite) el.isFinite = false;
       this.arr.push(el);
     });
-    this.arr[this.arr.length - 1].push({
+    this.arr[this.arr.length - 1].q.push({
       key: ";",
       value: this.arr.length + index
     });

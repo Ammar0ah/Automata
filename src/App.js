@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 import Statement from "./Models/Statement";
-// import FullAutomata from "./Models/FullAutomata";
 import PreAutomata from "./Models/PreAutomata";
 import NumberAutomata from "./Models/NumberAutomata";
+import commentAutomata from "./Models/commentAutomata";
+import Q from "./Models/Q";
 class App extends Component {
   state = {
     preQs: [],
     numQs: [],
+    comQs: [],
+    varQs: [],
     Sigma: ["1", "0"],
     testInput: ""
   };
@@ -31,7 +34,6 @@ class App extends Component {
     this.setState({ Qs: newQ });
   };
   check = (current, index, Qs) => {
-    // const Qs = this.state.Qs;
     let item = Qs[index];
     console.log(Qs, "index:", index, "cur:", current);
     let result = [];
@@ -47,7 +49,6 @@ class App extends Component {
 
   isBelong = (current, chain, Qs) => {
     console.log("current :", current, "\nchain :", chain);
-    // const Qs = [...this.state.Qs];
     console.log(Qs);
     parseInt(current);
     if (current === -1) return false;
@@ -76,31 +77,26 @@ class App extends Component {
     for (let c in S) {
       console.log(S[c]);
     }
-    // S.forEach(el => {
-    //   if (!this.state.Sigma.includes(el)) res = false;
-    // });
     return res;
   };
   LoadState = () => {
-    // let Qs = new FullAutomata();
-    // Qs.GenerateAutomata();
-    // this.setState({
-    //   Qs: Qs.arr
-    // });
+    let Q0 = new Q();
+    Q0.addq(" ", 0);
     const preQs = new PreAutomata();
     const numQs = new NumberAutomata();
+    const comQs = new commentAutomata();
     preQs.GenerateAutomata();
     numQs.GenerateAutomata(0);
+    comQs.GenerateAutomata(0);
+    preQs.arr[0].q = [...preQs.arr[0].q, ...Q0.q];
     this.setState({
       preQs: [...preQs.arr],
-      numQs: [...numQs.arr]
+      numQs: [...numQs.arr],
+      comQs: [...comQs.arr]
     });
   };
 
   render() {
-    // let St = this.state.preQs.map((_, index) => (
-    //   <Statement key={index} clicked={this.AddState} index={index} />
-    // ));
     return (
       <div>
         <button onClick={this.LoadState}>LOAD STATE</button>
@@ -114,10 +110,25 @@ class App extends Component {
         />
         <button
           onClick={() => {
-            let r =
-              this.isBelong(0, this.state.testInput, this.state.preQs) ||
-              this.isBelong(0, this.state.testInput, this.state.numQs);
-            console.log(JSON.stringify(this.state.Qs), this.state.testInput);
+            const input = this.state.testInput.split(" ");
+            let finalinput = [];
+            for (let elm of input) {
+              if (elm !== "") {
+                finalinput.push(elm);
+              }
+            }
+            console.log(input, "\n", this.state.testInput.trim());
+            let r = true;
+            for (let elm of finalinput) {
+              r =
+                (this.isBelong(0, elm.trim(), this.state.preQs) ||
+                  this.isBelong(0, elm.trim(), this.state.numQs)) &&
+                r;
+              console.log(JSON.stringify(this.state.Qs), this.state.testInput);
+            }
+            r =
+              this.isBelong(0, this.state.testInput.trim(), this.state.comQs) ||
+              r;
             alert("result: " + r);
           }}
         >

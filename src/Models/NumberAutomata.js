@@ -10,7 +10,6 @@ class NumberAutomata {
     //Generating q0
     this.Q0.addq("+", index + 1);
     this.Q0.addq("-", index + 1);
-    this.Q0.addq(".", index + 3);
     this.addNumbersToQ(this.Q0, index + 2);
     this.arr.push(this.Q0);
 
@@ -22,7 +21,7 @@ class NumberAutomata {
     //Gereating q2
     q = new Q();
     this.addNumbersToQ(q, index + 2);
-    q.addq(".", index + 2);
+    q.addq(".", index + 3);
     q.isFinite = true;
     this.arr.push(q);
     console.log(this.arr);
@@ -37,6 +36,8 @@ class NumberAutomata {
     this.addNumbersToQ(q, index + 4);
     q.isFinite = true;
     this.arr.push(q);
+
+    //Gereating q5
   };
 
   addNumbersToQ = (q, index) => {

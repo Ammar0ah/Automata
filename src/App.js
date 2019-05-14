@@ -18,7 +18,7 @@ class App extends Component {
     varQs: [],
     Qs: [],
     testInput: "",
-    type: ""
+    type: "Waiting for You :)"
   };
   AddQs = () => {
     const newQs = [...this.state.Qs];

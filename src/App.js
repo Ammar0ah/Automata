@@ -38,11 +38,13 @@ class App extends Component {
   check = (current, index, Qs) => {
     let item = Qs[index];
     let result = [];
-    item.q.forEach(el => {
-      if (el.key === current) {
-        result.push(el.value);
-      }
-    });
+    if (item) {
+      item.q.forEach(el => {
+        if (el.key === current) {
+          result.push(el.value);
+        }
+      });
+    }
     // console.log("res", result, "\n", parseInt(result));
     if (result) return result;
     else return -1;
@@ -53,8 +55,11 @@ class App extends Component {
     parseInt(current);
     if (current === -1) return false;
     else {
-      if (chain.length === 0) return Qs[current].isFinite;
-      else {
+      if (chain.length === 0) {
+        if (Qs[current]) {
+          return Qs[current].isFinite;
+        }
+      } else {
         let ch = String(chain);
         const c = ch.slice(1, ch.length);
         const resArr = this.check(ch[0], current, Qs);
@@ -109,8 +114,13 @@ class App extends Component {
       return "This is Decleration";
     else return "This is not valid Automata";
   };
-  InputChanged = e => {
-    this.setState({ testInput: e.currentTarget.value, type: this.test() });
+  InputChanged = value => {
+    const type = this.test();
+    this.setState({
+      testInput: value,
+      type: type
+    });
+    console.log(this.state.testInput, value);
   };
 
   render() {
@@ -126,9 +136,11 @@ class App extends Component {
         {/* <button onClick={this.AddQs}>ADD NEW QS</button> */}
         <div className="input-field">
           <input
-            type="text-area"
+            type="text"
+            onChange={e => {
+              this.InputChanged(e.currentTarget.value);
+            }}
             value={this.state.testInput}
-            onChange={e => this.InputChanged(e)}
           />
         </div>
         <h3>{this.state.type}</h3>

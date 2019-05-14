@@ -110,7 +110,7 @@ class App extends Component {
     else return "This is not valid Automata";
   };
   InputChanged = e => {
-    this.setState({ testInput: e.currentTarget.value, type: this.test() });
+    this.setState({ testInput: e.currentTarget.value},() => this.setState({type: this.test()}))
   };
 
   render() {
@@ -130,8 +130,16 @@ class App extends Component {
             value={this.state.testInput}
             onChange={e => this.InputChanged(e)}
           />
+          {/* <span class="input input--jiro">
+					<input class="input__field input__field--jiro" type="text" id="input-10" />
+					<label class="input__label input__label--jiro" for="input-10">
+						<span class="input__label-content input__label-content--jiro">Cat's Name</span>
+					</label>
+				</span> */}
+				
         </div>
         <h3>{this.state.type}</h3>
+        
       </div>
     );
   }

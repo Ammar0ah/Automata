@@ -40,9 +40,10 @@ class VariableAutomata {
       if (el.isFinite) el.isFinite = false;
       this.arr.push(el);
     });
+    console.log(this.arr.length - 1)
     this.arr[this.arr.length - 1].q.push({
       key: ";",
-      value: this.arr.length + index
+      value: this.arr.length + index 
     });
 
     this.CommentAutomata.GenerateAutomata(index + this.arr.length);
@@ -58,7 +59,7 @@ class VariableAutomata {
     this.arr.push(q);
     this.arr[23].q.push({
       key: ";",
-      value: this.arr.length + index
+      value: 26
     });
     this.arr[20].q.push({
       key: " ",

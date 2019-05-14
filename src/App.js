@@ -12,8 +12,9 @@ class App extends Component {
     numQs: [],
     comQs: [],
     varQs: [],
-    Sigma: ["1", "0"],
-    testInput: ""
+    Qs: [],
+    testInput: "",
+    type: ""
   };
   AddQs = () => {
     const newQs = [...this.state.Qs];
@@ -36,7 +37,6 @@ class App extends Component {
   };
   check = (current, index, Qs) => {
     let item = Qs[index];
-    console.log(Qs, "index:", index, "cur:", current);
     let result = [];
     item.q.forEach(el => {
       if (el.key === current) {
@@ -49,7 +49,6 @@ class App extends Component {
   };
 
   isBelong = (current, chain, Qs) => {
-    console.log("current :", current, "\nchain :", chain);
     console.log(Qs);
     parseInt(current);
     if (current === -1) return false;
@@ -61,7 +60,6 @@ class App extends Component {
         const resArr = this.check(ch[0], current, Qs);
         let finalRes = false;
         for (let index of resArr) {
-          console.log("index: ", index);
           finalRes |= this.isBelong(index, c, Qs);
         }
         return finalRes;
@@ -100,47 +98,40 @@ class App extends Component {
     });
   };
 
+  test = () => {
+    if (this.isBelong(0, this.state.testInput, this.state.preQs))
+      return "This is keyword";
+    else if (this.isBelong(0, this.state.testInput, this.state.numQs))
+      return "This is Number";
+    else if (this.isBelong(0, this.state.testInput, this.state.comQs))
+      return "This is Comment";
+    else if (this.isBelong(0, this.state.testInput, this.state.varQs))
+      return "This is Decleration";
+    else return "This is not valid Automata";
+  };
+  InputChanged = e => {
+    this.setState({ testInput: e.currentTarget.value, type: this.test() });
+  };
+
   render() {
+    let St = this.state.Qs.map((_, i) => (
+      <Statement key={i} clicked={this.AddState} index={i} />
+    ));
     return (
       <div>
-        <button onClick={this.LoadState}>LOAD STATE</button>
-        {/* {St} */}
-        <button onClick={this.AddQs}>ADD NEW QS</button>
-        <input
-          value={this.state.testInput}
-          onChange={e => {
-            this.setState({ testInput: e.currentTarget.value });
-          }}
-        />
-        <button
-          onClick={() => {
-            const input = this.state.testInput.split(" ");
-            let finalinput = [];
-            for (let elm of input) {
-              if (elm !== "") {
-                finalinput.push(elm);
-              }
-            }
-            console.log(input, "\n", this.state.testInput.trim());
-            let r = true;
-            for (let elm of finalinput) {
-              r =
-                (this.isBelong(0, elm.trim(), this.state.preQs) ||
-                  this.isBelong(0, elm.trim(), this.state.numQs)) &&
-                r;
-              console.log(JSON.stringify(this.state.Qs), this.state.testInput);
-            }
-            console.log("11  ", this.state.testInput);
-            r =
-              this.isBelong(0, this.state.testInput.trim(), this.state.comQs) ||
-              this.isBelong(0, this.state.testInput, this.state.varQs) ||
-              r;
-
-            alert("result: " + r);
-          }}
-        >
-          Test
-        </button>
+        {St}
+        <div className="load-state">
+          <button onClick={this.LoadState}>LOAD STATE</button>
+        </div>
+        {/* <button onClick={this.AddQs}>ADD NEW QS</button> */}
+        <div className="input-field">
+          <input
+            type="text-area"
+            value={this.state.testInput}
+            onChange={e => this.InputChanged(e)}
+          />
+        </div>
+        <h3>{this.state.type}</h3>
       </div>
     );
   }

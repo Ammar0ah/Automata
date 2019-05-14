@@ -126,11 +126,12 @@ class App extends Component {
       <div>
         {St}
         <div className="load-state">
-          <button onClick={this.LoadState}>LOAD STATE</button>
+          <button className="button button--nuka button--round-s button--text-thick" onClick={this.LoadState}>LOAD STATE</button>
         </div>
         {/* <button onClick={this.AddQs}>ADD NEW QS</button> */}
         <div className="input-field">
           <input
+            placeholder="write your test code here"
             type="text"
             onChange={e => {
               this.InputChanged(e);

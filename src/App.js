@@ -14,7 +14,8 @@ class App extends Component {
     varQs: [],
     Qs: [],
     testInput: "",
-    type: "Waiting for You :)"
+    type: "Waiting for You :)",
+    displayAlert: false
   };
   AddQs = () => {
     const newQs = [...this.state.Qs];
@@ -99,8 +100,10 @@ class App extends Component {
       preQs: [...preQs.arr],
       numQs: [...numQs.arr],
       comQs: [...comQs.arr],
-      varQs: [...varQs.arr]
+      varQs: [...varQs.arr],
+      displayAlert: true,
     });
+    setTimeout(() => this.setState({displayAlert: false}),2000)
   };
 
   test = () => {
@@ -122,6 +125,7 @@ class App extends Component {
     let St = this.state.Qs.map((_, i) => (
       <Statement key={i} clicked={this.AddState} index={i} />
     ));
+    const alertClass = this.state.displayAlert ? "notify  active" : "notify"
     return (
       <div>
         {St}
@@ -147,7 +151,7 @@ class App extends Component {
 
         </div>
         <h3>{this.state.type}</h3>
-
+        <div className={alertClass}><span id="notifyType" className="success"></span></div>
       </div>
     );
   }

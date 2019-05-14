@@ -6,6 +6,10 @@ import NumberAutomata from "./Models/NumberAutomata";
 import commentAutomata from "./Models/commentAutomata";
 import VariableAutomata from "./Models/VariableAutomata";
 import Q from "./Models/Q";
+import { Route, Switch } from "react-router-dom";
+import LoadingPage from "./Models/loadingPage";
+import CreatePage from "./Models/createPage";
+
 class App extends Component {
   state = {
     preQs: [],
@@ -115,38 +119,53 @@ class App extends Component {
     else return "This is not valid Automata";
   };
   InputChanged = e => {
-    this.setState({ testInput: e.currentTarget.value},() => this.setState({type: this.test()}))
+    this.setState({ testInput: e.currentTarget.value }, () =>
+      this.setState({ type: this.test() })
+    );
   };
 
   render() {
-    let St = this.state.Qs.map((_, i) => (
-      <Statement key={i} clicked={this.AddState} index={i} />
-    ));
     return (
       <div>
+<<<<<<< HEAD
+        <Switch>
+          <Route
+            path="/Load"
+            render={() => (
+              <LoadingPage
+                LoadState={this.LoadState}
+                testInput={this.state.testInput}
+                InputChanged={this.InputChanged}
+                type={this.state.type}
+              />
+            )}
+=======
         {St}
         <div className="load-state">
-          <button onClick={this.LoadState}>LOAD STATE</button>
+          <button className="button button--nuka button--round-s button--text-thick" onClick={this.LoadState}>LOAD STATE</button>
         </div>
         {/* <button onClick={this.AddQs}>ADD NEW QS</button> */}
         <div className="input-field">
           <input
+            placeholder="write your test code here"
             type="text"
             onChange={e => {
               this.InputChanged(e);
             }}
             value={this.state.testInput}
+>>>>>>> 20f1dc5a6afc53c27c2a3173230254429f0f42c6
           />
-          {/* <span class="input input--jiro">
-					<input class="input__field input__field--jiro" type="text" id="input-10" />
-					<label class="input__label input__label--jiro" for="input-10">
-						<span class="input__label-content input__label-content--jiro">Cat's Name</span>
-					</label>
-				</span> */}
-
-        </div>
-        <h3>{this.state.type}</h3>
-
+          <Route
+            path="/Creat"
+            render={() => (
+              <CreatePage
+                Qs={this.state.Qs}
+                AddState={this.AddState}
+                AddQs={this.AddQs}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }

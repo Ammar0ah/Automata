@@ -5,7 +5,7 @@ body {
 * {
   font-family: 'Cairo';
 }
-*:focus { 
+*:focus {
   outline: none;
 }
 
@@ -61,7 +61,7 @@ h3 {
   font-size: 3.5rem;
 }
 
-h3::after { 
+h3::after {
   content: "";
   height: 1px;
   display: block;

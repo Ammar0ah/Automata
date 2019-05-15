@@ -22,7 +22,7 @@ class VariableAutomata {
       if (el.isFinite) {
         el.q.push({ key: " ", value: index + this.arr.length });
         el.isFinite = false;
-      } 
+      }
     });
     q = new Q();
     this.addallCharToQ(q, index + this.arr.length + 1);
@@ -40,10 +40,10 @@ class VariableAutomata {
       if (el.isFinite) el.isFinite = false;
       this.arr.push(el);
     });
-    console.log(this.arr.length - 1)
+    console.log(this.arr.length - 1);
     this.arr[this.arr.length - 1].q.push({
       key: ";",
-      value: this.arr.length + index 
+      value: this.arr.length + index
     });
 
     this.CommentAutomata.GenerateAutomata(index + this.arr.length);
@@ -55,7 +55,7 @@ class VariableAutomata {
     this.arr[ind].isFinite = true;
     q = new Q();
     q.addq("=", 21);
-    q.addq(" ",32);
+    q.addq(" ", 32);
     this.arr.push(q);
     this.arr[23].q.push({
       key: ";",
@@ -81,15 +81,15 @@ class VariableAutomata {
 
   addallToQ = (q, index) => {
     let all = "abcdefghijklmnopqrstuvwxyz0123456789";
-    for (let elm in all) {
-      q.addq(all.slice(0, 1), index);
+    for (let elm of all) {
+      q.addq(elm, index);
       all = all.slice(1, all.length);
     }
   };
   addallCharToQ = (q, index) => {
     let all = "abcdefghijklmnopqrstuvwxyz";
-    for (let elm in all) {
-      q.addq(all.slice(0, 1), index);
+    for (let elm of all) {
+      q.addq(elm, index);
       all = all.slice(1, all.length);
     }
   };

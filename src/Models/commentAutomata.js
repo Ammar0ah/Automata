@@ -48,9 +48,9 @@ class commentAutomata {
 
   addallToQ = (q, index) => {
     let all =
-      "abcdefghijklmnopqrstuvwxyz0123456789(){}[]ABCDEFGHIJKLMNOPQRSTUVWXYZ+-=_.,;:!? #&$%@|^";
-    for (let elm in all) {
-      q.addq(all.slice(0, 1), index);
+      "'abcdefghijklmnopqrstuvwxyz0123456789(){}[]ABCDEFGHIJKLMNOPQRSTUVWXYZ+-=_.,;:!? #&$%@|^";
+    for (let elm of all) {
+      q.addq(elm, index);
       all = all.slice(1, all.length);
     }
   };

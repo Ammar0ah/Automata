@@ -8,7 +8,21 @@ class CreatePage extends Component {
     return (
       <div>
         {St}
-        <button onClick={this.props.AddQs}>ADD NEW QS</button>
+        <hr />
+        <button className="addButton" onClick={this.props.AddQs}>
+          ADD NEW QS
+        </button>
+        <div className="input-field">
+          <input
+            type="text"
+            placeholder="write your test code here"
+            value={this.props.testInput}
+            onChange={e => {
+              this.props.InputChanged(e, 1);
+            }}
+          />
+        </div>
+        <h3>{this.props.type}</h3>
       </div>
     );
   }

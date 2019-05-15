@@ -105,26 +105,32 @@ class App extends Component {
       numQs: [...numQs.arr],
       comQs: [...comQs.arr],
       varQs: [...varQs.arr],
-      displayAlert: true,
+      displayAlert: true
     });
-    setTimeout(() => this.setState({displayAlert: false}),2000)
+    setTimeout(() => this.setState({ displayAlert: false }), 2000);
   };
 
-  test = () => {
-    if (this.isBelong(0, this.state.testInput, this.state.preQs))
-      return "This is keyword";
-    else if (this.isBelong(0, this.state.testInput, this.state.numQs))
-      return "This is Number";
-    else if (this.isBelong(0, this.state.testInput, this.state.comQs))
-      return "This is Comment";
-    else if (this.isBelong(0, this.state.testInput, this.state.varQs))
-      return "This is Decleration";
-    else return "This is not valid Automata";
+  test = t => {
+    if (t) {
+      if (this.isBelong(0, this.state.testInput, this.state.Qs)) return "True";
+      else return "false";
+    } else {
+      if (this.isBelong(0, this.state.testInput, this.state.preQs))
+        return "This is keyword";
+      else if (this.isBelong(0, this.state.testInput, this.state.numQs))
+        return "This is Number";
+      else if (this.isBelong(0, this.state.testInput, this.state.comQs))
+        return "This is Comment";
+      else if (this.isBelong(0, this.state.testInput, this.state.varQs))
+        return "This is Decleration";
+      else return "This is not valid Automata";
+    }
   };
-  InputChanged = e => {
-    this.setState({ testInput: e.currentTarget.value }, () =>
-      this.setState({ type: this.test() })
-    );
+  InputChanged = (e, t) => {
+    this.setState({ testInput: e.currentTarget.value }, () => {
+      const type = t ? this.test(t) : this.test();
+      this.setState({ type: type });
+    });
   };
 
   render() {
@@ -150,6 +156,9 @@ class App extends Component {
                 Qs={this.state.Qs}
                 AddState={this.AddState}
                 AddQs={this.AddQs}
+                testInput={this.state.testInput}
+                InputChanged={this.InputChanged}
+                type={this.state.type}
               />
             )}
           />

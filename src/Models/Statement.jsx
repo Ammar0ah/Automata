@@ -23,20 +23,28 @@ class Statement extends Component {
   };
   render() {
     return (
-      <div>
-        <input
-          onChange={e => this.inputChanged(e, "key")}
-          value={this.state.inputKey}
-        />
-        <input
-          onChange={e => this.inputChanged(e, "value")}
-          value={this.state.inputValue}
-        />
-        <input
-          type="checkbox"
-          value={this.state.isFinite}
-          onChange={e => this.inputChanged(e, "isFinite")}
-        />
+      <div className="statment">
+        <div>
+          <input
+            type="text"
+            onChange={e => this.inputChanged(e, "key")}
+            value={this.state.inputKey}
+          />
+          <input
+            type="text"
+            onChange={e => this.inputChanged(e, "value")}
+            value={this.state.inputValue}
+          />
+          <label className="checkLabel">
+            <input
+              type="text"
+              type="checkbox"
+              value={this.state.isFinite}
+              onChange={e => this.inputChanged(e, "isFinite")}
+            />
+            <span class="chk" />
+          </label>
+        </div>
         <button
           onClick={() =>
             this.props.clicked(
@@ -49,8 +57,6 @@ class Statement extends Component {
         >
           SUBMIT
         </button>
-        <h3>key: {this.state.inputKey}</h3>
-        <h3>Value: {this.state.inputValue}</h3>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Statement from "./Statement";
 class CreatePage extends Component {
+  
   render() {
     let St = this.props.Qs.map((_, i) => (
       <Statement key={i} clicked={this.props.AddState} index={i} />
@@ -23,6 +24,7 @@ class CreatePage extends Component {
           />
         </div>
         <h3>{this.props.type}</h3>
+        <button onClick={this.props.onSaveclick}>Save</button>
       </div>
     );
   }

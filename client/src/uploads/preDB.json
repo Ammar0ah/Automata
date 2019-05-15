@@ -1,0 +1,622 @@
+{
+    "chain" : "implements",
+    "arr": [{
+        "q": [{
+            "key": "i",
+            "value": 1
+        }, {
+            "key": "d",
+            "value": 13
+        }, {
+            "key": "a",
+            "value": 19
+        }, {
+            "key": "b",
+            "value": 27
+        }, {
+            "key": "c",
+            "value": 41
+        }, {
+            "key": "f",
+            "value": 63
+        }, {
+            "key": "t",
+            "value": 87
+        }, {
+            "key": "l",
+            "value": 99
+        }, {
+            "key": " ",
+            "value": 0
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "n",
+            "value": 2
+        }, {
+            "key": "m",
+            "value": 4
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 3
+        }, {
+            "key": "s",
+            "value": 73
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 81
+        }],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "p",
+            "value": 5
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "l",
+            "value": 6
+        }, {
+            "key": "o",
+            "value": 70
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 7
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "m",
+            "value": 8
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 9
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "n",
+            "value": 10
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 11
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "s",
+            "value": 12
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "o",
+            "value": 14
+        }, {
+            "key": "e",
+            "value": 57
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "u",
+            "value": 15
+        }],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "b",
+            "value": 16
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "l",
+            "value": 17
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 18
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "b",
+            "value": 20
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "s",
+            "value": 21
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 22
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "r",
+            "value": 23
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 24
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "c",
+            "value": 25
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 26
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "o",
+            "value": 28
+        }, {
+            "key": "r",
+            "value": 34
+        }, {
+            "key": "y",
+            "value": 38
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "o",
+            "value": 29
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "l",
+            "value": 30
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 31
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 32
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "n",
+            "value": 33
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 35
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 36
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "k",
+            "value": 37
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 39
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 40
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 42
+        }, {
+            "key": "o",
+            "value": 48
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "s",
+            "value": 43
+        }, {
+            "key": "t",
+            "value": 45
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 44
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "c",
+            "value": 46
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "h",
+            "value": 47
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "n",
+            "value": 49
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "s",
+            "value": 50
+        }, {
+            "key": "t",
+            "value": 52
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 51
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "i",
+            "value": 53
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "n",
+            "value": 54
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "u",
+            "value": 55
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 56
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "f",
+            "value": 58
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 59
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "u",
+            "value": 60
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "l",
+            "value": 61
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 62
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "i",
+            "value": 64
+        }, {
+            "key": "l",
+            "value": 95
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "n",
+            "value": 65
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 66
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "l",
+            "value": 67
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "l",
+            "value": 68
+        }],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "y",
+            "value": 69
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "r",
+            "value": 71
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 72
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 74
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 75
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "n",
+            "value": 76
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "c",
+            "value": 77
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 78
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "o",
+            "value": 79
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "f",
+            "value": 80
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "r",
+            "value": 82
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "f",
+            "value": 83
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 84
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "c",
+            "value": 85
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "e",
+            "value": 86
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "h",
+            "value": 88
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "i",
+            "value": 89
+        }, {
+            "key": "r",
+            "value": 91
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "s",
+            "value": 90
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "o",
+            "value": 92
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "w",
+            "value": 93
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "s",
+            "value": 94
+        }],
+        "isFinite": true
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "o",
+            "value": 96
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "a",
+            "value": 97
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "t",
+            "value": 98
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }, {
+        "q": [{
+            "key": "o",
+            "value": 100
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "n",
+            "value": 101
+        }],
+        "isFinite": false
+    }, {
+        "q": [{
+            "key": "g",
+            "value": 102
+        }],
+        "isFinite": false
+    }, {
+        "q": [],
+        "isFinite": true
+    }]
+}

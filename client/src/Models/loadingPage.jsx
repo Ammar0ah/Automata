@@ -8,8 +8,7 @@ class LoadingPage extends Component {
         <div className="load-state">
           <button
             className="button button--nuka button--round-s button--text-thick"
-            onClick={this.props.LoadState}
-          >
+            onClick={this.props.LoadState}>
             LOAD STATE
           </button>
         </div>

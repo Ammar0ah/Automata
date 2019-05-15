@@ -8,7 +8,12 @@ import Q from "./Models/Q";
 import { Route, Switch, NavLink } from "react-router-dom";
 import LoadingPage from "./Models/loadingPage";
 import CreatePage from "./Models/createPage";
-
+import FileUpload from "./components/FileUpload";
+import axios from "axios";
+import numDB from "./uploads/numDB.json";
+import preDB from './uploads/preDB.json'
+import commDB from './uploads/commDB.json'
+import varDB from './uploads/varDB.json'
 class App extends Component {
   state = {
     preQs: [],
@@ -20,6 +25,40 @@ class App extends Component {
     type: "Waiting for You :)",
     displayAlert: false
   };
+  loadDb = fileName => {
+    console.log(fileName)
+    switch (fileName) {
+      case "numDB":
+            if (this.isBelong(0,numDB.chain, numDB.arr))
+              this.setState({ type: "this is a number Automata" });
+       
+        break;
+      case "preDB.json":
+      
+            if (this.isBelong(0, preDB.chain, preDB.arr))
+              this.setState({ type: "this is a Served words Automata" });
+       
+        break;
+      case "commDB.json":
+        
+            if (this.isBelong(0, commDB.chain, commDB.arr)){
+              alert('Comment')
+              this.setState({ type: "this is a Comment Automata" });
+
+            }
+        break;
+      case "varDB.json":
+     
+            if (this.isBelong(0, varDB.chain, varDB.arr))
+              this.setState({ type: "this is a Variable Automata" });
+        
+        break;
+
+      default:
+       this.setState({type:"this is not an Automata file"})
+    }
+  };
+
   AddQs = () => {
     const newQs = [...this.state.Qs];
     newQs.push({ q: [], isFinite: false });
@@ -99,6 +138,8 @@ class App extends Component {
     comQs.GenerateAutomata(0);
     varQs.GenerateAutomata(0);
     preQs.arr[0].q = [...preQs.arr[0].q, ...Q0.q];
+
+    console.log(JSON.stringify(numQs));
     this.setState({
       preQs: [...preQs.arr],
       numQs: [...numQs.arr],
@@ -135,6 +176,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <FileUpload test={this.loadDb} />
         <Switch>
           <Route
             path="/Load"
@@ -160,6 +202,7 @@ class App extends Component {
                 testInput={this.state.testInput}
                 InputChanged={this.InputChanged}
                 type={this.state.type}
+                onSaveclick={this.onSaveclick}
               />
             )}
           />

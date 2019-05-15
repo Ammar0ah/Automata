@@ -144,7 +144,7 @@ class App extends Component {
             )}
           />
           <Route
-            path="/Creat"
+            path="/Create"
             render={() => (
               <CreatePage
                 Qs={this.state.Qs}

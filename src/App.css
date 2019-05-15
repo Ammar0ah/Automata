@@ -380,8 +380,8 @@ h3::after {
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.027);
     color: #D93F87;
-		font-size: 1.2rem;
-		 border-radius: 10px;
+    font-size: 1.2rem;
+    border-radius: 10px;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border: 3px solid #D93F87;
 }
@@ -392,4 +392,21 @@ h3::after {
 
 hr {
     border-color: rgba(42, 27, 60, 0.3)
+}
+
+.link {
+    margin: 20px auto;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.NavLink {
+    color: #D93F87;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.NavLink:hover {
+    color: #fff
 }

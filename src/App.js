@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import Statement from "./Models/Statement";
 import PreAutomata from "./Models/PreAutomata";
 import NumberAutomata from "./Models/NumberAutomata";
 import commentAutomata from "./Models/commentAutomata";
 import VariableAutomata from "./Models/VariableAutomata";
 import Q from "./Models/Q";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, NavLink } from "react-router-dom";
 import LoadingPage from "./Models/loadingPage";
 import CreatePage from "./Models/createPage";
 
@@ -139,6 +138,7 @@ class App extends Component {
         <Switch>
           <Route
             path="/Load"
+            exact
             render={() => (
               <LoadingPage
                 LoadState={this.LoadState}
@@ -151,6 +151,7 @@ class App extends Component {
           />
           <Route
             path="/Create"
+            exact
             render={() => (
               <CreatePage
                 Qs={this.state.Qs}
@@ -160,6 +161,20 @@ class App extends Component {
                 InputChanged={this.InputChanged}
                 type={this.state.type}
               />
+            )}
+          />
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <div className="link">
+                <NavLink className="NavLink" to="/load">
+                  load
+                </NavLink>
+                <NavLink className="NavLink" to="/create">
+                  create
+                </NavLink>
+              </div>
             )}
           />
         </Switch>

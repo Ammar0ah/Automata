@@ -15,10 +15,10 @@ Loading Automata from State ,test it and loading the corresponding graph example
   <img src="images/create.png" width="800" heigth="400">
 
 ## Authors:
-* [Ammar Al-Helali] (https://www.linkedin.com/in/ammar-al-helali-968803146/)
-* [Riad Al-Najjar]  (https://www.linkedin.com/in/riad-al-najjar-53b267133/)
-* [Kareem Dabbeet] (https://www.linkedin.com/in/kareemda)
-* [Moutasem Habboub]
+* [Ammar Al-Helali](https://www.linkedin.com/in/ammar-al-helali-968803146/)
+* [Riad Al-Najjar](https://www.linkedin.com/in/riad-al-najjar-53b267133/)
+* [Kareem Dabbeet](https://www.linkedin.com/in/kareemda)
+* [Moutasem Habboub](https://www.facebook.com/mmh1888)
 # Built With:
 * ReactJS 16.8
 * NPM graph-vis

@@ -2,7 +2,7 @@
 we made this project to represent DFA Automata in ReactJS code with smooth Graph which represents 
 the corresponding automata 
 ## Screenshots:
-Loading Automata from State ,test it and loading the correspond graph example:
+Loading Automata from State ,test it and loading the corresponding graph example:
 
   <img src="images/Automata.png" width="800" heigth="400">
 

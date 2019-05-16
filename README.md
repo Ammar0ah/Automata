@@ -1,5 +1,5 @@
 # Automata DFA ReactJS Project
-we made this project to represent DFA Automata in ReactJS code with smooth Graph which represents 
+we made this project to represent DFA Automata in ReactJS code with smooth, Real-time loading Graph which represents 
 the corresponding automata 
 ## Screenshots:
 Loading Automata from State ,test it and loading the corresponding graph example:

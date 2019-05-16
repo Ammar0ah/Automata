@@ -8,6 +8,7 @@ import Q from "./Models/Q";
 import { Route, Switch, NavLink } from "react-router-dom";
 import LoadingPage from "./containers/loadingPage";
 import CreatePage from "./containers/createPage";
+import UploadPage from "./containers/uploadPage";
 
 class App extends Component {
   state = {
@@ -112,7 +113,7 @@ class App extends Component {
   };
 
   test = t => {
-    if (t) {
+    if (t || this.state.upload) {
       if (this.isBelong(0, this.state.testInput, this.state.Qs)) return "True";
       else return "false";
     } else {
@@ -139,7 +140,7 @@ class App extends Component {
     reader.readAsText(event.target.files[0]);
   };
   onReaderLoad = event => {
-    console.log(JSON.parse(event.target.result));
+    this.setState({ upload: true });
     this.setState({ fileType: JSON.parse(event.target.result).type });
     switch (this.state.fileType) {
       case "comQs":
@@ -154,6 +155,9 @@ class App extends Component {
       case "varQs":
         this.setState({ varQs: JSON.parse(event.target.result).arr });
         break;
+      default:
+        this.setState({ Qs: JSON.parse(event.target.result).arr });
+        break;
     }
   };
 
@@ -166,7 +170,6 @@ class App extends Component {
             exact
             render={() => (
               <LoadingPage
-                changed={this.fileChanged}
                 LoadState={this.LoadState}
                 testInput={this.state.testInput}
                 InputChanged={this.InputChanged}
@@ -190,6 +193,18 @@ class App extends Component {
             )}
           />
           <Route
+            path="/file"
+            exact
+            render={() => (
+              <UploadPage
+                changed={this.fileChanged}
+                testInput={this.state.testInput}
+                InputChanged={this.InputChanged}
+                type={this.state.type}
+              />
+            )}
+          />
+          <Route
             path="/"
             exact
             render={() => (
@@ -199,6 +214,9 @@ class App extends Component {
                 </NavLink>
                 <NavLink className="NavLink" to="/create">
                   create
+                </NavLink>
+                <NavLink className="NavLink" to="/file">
+                  file
                 </NavLink>
               </div>
             )}

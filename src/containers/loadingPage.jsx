@@ -5,7 +5,6 @@ class LoadingPage extends Component {
     const alertClass = this.props.alert ? "notify  active" : "notify";
     return (
       <div>
-        <input type="file" onChange={this.props.changed} className="button button--nuka button--round-s button--text-thick" />
         <div className="load-state">
           <button
             className="button button--nuka button--round-s button--text-thick"

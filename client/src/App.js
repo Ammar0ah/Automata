@@ -188,6 +188,7 @@ class App extends Component {
             exact
             render={() => (
               <LoadingPage
+                changed={this.fileChanged}
                 LoadState={this.LoadState}
                 testInput={this.state.testInput}
                 InputChanged={this.InputChanged}

@@ -20,6 +20,8 @@ class Statement extends Component {
       case "isFinite":
         this.setState({ isFinite: !this.state.isFinite });
         break;
+      default:
+      break;
     }
   };
 
@@ -45,7 +47,6 @@ class Statement extends Component {
           />
           <label className="checkLabel">
             <input
-              type="text"
               type="checkbox"
               value={this.state.isFinite}
               onChange={e => this.inputChanged(e, "isFinite")}

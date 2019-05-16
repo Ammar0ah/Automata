@@ -23,6 +23,7 @@ class VariableAutomata {
         el.q.push({ key: " ", value: index + this.arr.length });
         el.isFinite = false;
       }
+      return el;
     });
     q = new Q();
     this.addallCharToQ(q, index + this.arr.length + 1);
@@ -39,6 +40,7 @@ class VariableAutomata {
     this.NumberAutomata.arr.map(el => {
       if (el.isFinite) el.isFinite = false;
       this.arr.push(el);
+      return el;
     });
     console.log(this.arr.length - 1);
     this.arr[this.arr.length - 1].q.push({
@@ -48,9 +50,9 @@ class VariableAutomata {
 
     this.CommentAutomata.GenerateAutomata(index + this.arr.length);
     let ind = this.arr.length + index;
-    this.CommentAutomata.arr.map(el => {
+    for (let el of this.CommentAutomata.arr) {
       this.arr.push(el);
-    });
+    };
 
     this.arr[ind].isFinite = true;
     q = new Q();

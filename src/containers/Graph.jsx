@@ -18,7 +18,9 @@ const draw = (props) =>
         graph.nodes.push({ id: i, label:"q"+ i, color:q.isFinite?  "#e04141": "#fff"})
         q.q.map(node =>{
                 graph.edges.push({from:i , to :node.value})
+                return node
         })
+        return q;
     })
     
     const options = {

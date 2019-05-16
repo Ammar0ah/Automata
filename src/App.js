@@ -60,7 +60,7 @@ class App extends Component {
 
   isBelong = (current, chain, Qs) => {
     console.log(Qs);
-    parseInt(current);
+    Number(current);
     if (current === -1) return false;
     else {
       if (chain.length === 0) {
@@ -110,11 +110,12 @@ class App extends Component {
       numQs: [...numQs.arr],
       comQs: [...comQs.arr],
       varQs: [...varQs.arr],
-      displayAlert: true
-    });
-   
-    setTimeout(() => this.setState({ displayAlert: false }), 2000);
+    }); 
+    this.displayAlert();
   };
+  displayAlert = () => { 
+    this.setState({displayAlert: true},() => setTimeout(() => this.setState({ displayAlert: false }), 2000))
+  }
 
   test = t => {
     if (t || this.state.upload) {
@@ -142,6 +143,7 @@ class App extends Component {
     var reader = new FileReader();
     reader.onload = this.onReaderLoad;
     reader.readAsText(event.target.files[0]);
+    this.displayAlert();
   };
   onReaderLoad = event => {
     this.setState({ fileType: JSON.parse(event.target.result).type });
@@ -224,7 +226,8 @@ class App extends Component {
                 testInput={this.state.testInput}
                 InputChanged={this.InputChanged}
                 type={this.state.type}
-              />
+                alert={this.state.displayAlert}
+                />
             )}
           />
           <Route

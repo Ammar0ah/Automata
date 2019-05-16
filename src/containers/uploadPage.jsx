@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 class UploadPage extends Component {
   render() {
+    const alertClass = this.props.alert ? "notify  active" : "notify";
     return (
       <div>
         <button  className="button button--nuka button--round-s button--text-thick">
@@ -18,6 +19,10 @@ class UploadPage extends Component {
           />
         </div>
         <h3>{this.props.type}</h3>
+        <div className={alertClass}>
+          <span id="notifyType" className="success" />
+        </div>
+
       </div>
     );
   }

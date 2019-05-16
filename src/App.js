@@ -19,6 +19,7 @@ class App extends Component {
     Qs: [],
     testInput: "",
     type: "Waiting for You :)",
+    fileName: "Choose a file",
     displayAlert: false,
     upload: false,
     fileType: ""
@@ -135,6 +136,7 @@ class App extends Component {
     });
   };
   fileChanged = event => {
+    this.setState({fileName: event.target.files[0].name})
     var reader = new FileReader();
     reader.onload = this.onReaderLoad;
     reader.readAsText(event.target.files[0]);
@@ -202,6 +204,7 @@ class App extends Component {
                 testInput={this.state.testInput}
                 InputChanged={this.InputChanged}
                 type={this.state.type}
+                name={this.state.fileName}
               />
             )}
           />

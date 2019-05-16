@@ -3,11 +3,20 @@ class UploadPage extends Component {
   render() {
     return (
       <div>
-        <input
-          type="file"
-          onChange={this.props.changed}
-          className="button button--nuka button--round-s button--text-thick"
-        />
+        <div className="fileinput-container">
+          <input
+            type="file"
+            name="file"
+            id="file"
+            onChange={this.props.changed}
+          />
+          <label
+            htmlFor="file"
+            className="button button--nuka button--round-s button--text-thick"
+          >
+            {this.props.name}
+          </label>
+        </div>
         <div className="input-field">
           <input
             type="text"

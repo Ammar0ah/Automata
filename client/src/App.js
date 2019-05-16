@@ -6,14 +6,9 @@ import commentAutomata from "./Models/commentAutomata";
 import VariableAutomata from "./Models/VariableAutomata";
 import Q from "./Models/Q";
 import { Route, Switch, NavLink } from "react-router-dom";
-import LoadingPage from "./Models/loadingPage";
-import CreatePage from "./Models/createPage";
-import FileUpload from "./components/FileUpload";
-import axios from "axios";
-import numDB from "./uploads/numDB.json";
-import preDB from './uploads/preDB.json'
-import commDB from './uploads/commDB.json'
-import varDB from './uploads/varDB.json'
+import LoadingPage from "./containers/loadingPage";
+import CreatePage from "./containers/createPage";
+
 class App extends Component {
   state = {
     preQs: [],
@@ -31,16 +26,16 @@ class App extends Component {
       case "numDB":
             if (this.isBelong(0,numDB.chain, numDB.arr))
               this.setState({ type: "this is a number Automata" });
-       
+
         break;
       case "preDB.json":
-      
+
             if (this.isBelong(0, preDB.chain, preDB.arr))
               this.setState({ type: "this is a Served words Automata" });
-       
+
         break;
       case "commDB.json":
-        
+
             if (this.isBelong(0, commDB.chain, commDB.arr)){
               alert('Comment')
               this.setState({ type: "this is a Comment Automata" });
@@ -48,10 +43,10 @@ class App extends Component {
             }
         break;
       case "varDB.json":
-     
+
             if (this.isBelong(0, varDB.chain, varDB.arr))
               this.setState({ type: "this is a Variable Automata" });
-        
+
         break;
 
       default:
@@ -172,6 +167,16 @@ class App extends Component {
       this.setState({ type: type });
     });
   };
+  fileChanged = event => {
+    var reader = new FileReader();
+    reader.onload = this.onReaderLoad;
+    reader.readAsText(event.target.files[0]);
+  }
+  onReaderLoad = event => {
+    console.log(event.target.result);
+    var obj = JSON.parse(event.target.result);
+    console.log(obj.name, obj.family);
+  }
 
   render() {
     return (

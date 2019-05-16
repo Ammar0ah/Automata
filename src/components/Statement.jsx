@@ -6,8 +6,9 @@ class Statement extends Component {
     inputValue: "",
     inputIndex: "",
     isFinite: false
+    ,label:""
   };
-
+  
   inputChanged = (e, type) => {
     switch (type) {
       case "key":
@@ -21,18 +22,25 @@ class Statement extends Component {
         break;
     }
   };
+
   render() {
     return (
       <div className="statment">
         <div>
           <input
             type="text"
-            onChange={e => this.inputChanged(e, "key")}
+            onChange={e => {this.setState({label:this.state.label+e.currentTarget.value}); this.inputChanged(e, "key")}}
             value={this.state.inputKey}
+
           />
           <input
             type="text"
-            onChange={e => this.inputChanged(e, "value")}
+            onChange={e =>{
+              this.setState({ label: this.state.label + e.currentTarget.value })
+              this.inputChanged(e, "value")
+            }
+            } 
+              
             value={this.state.inputValue}
           />
           <label className="checkLabel">
@@ -42,17 +50,21 @@ class Statement extends Component {
               value={this.state.isFinite}
               onChange={e => this.inputChanged(e, "isFinite")}
             />
-            <span class="chk" />
+            <span className="chk" />
           </label>
         </div>
         <button
           onClick={() =>
-            this.props.clicked(
+
+           { 
+             
+             this.props.clicked(
               this.state.inputKey,
               this.state.inputValue,
               this.props.index,
               this.state.isFinite
-            )
+              )
+            }
           }
         >
           SUBMIT

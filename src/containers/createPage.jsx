@@ -18,6 +18,7 @@ class CreatePage extends Component {
             placeholder="write your test code here"
             value={this.props.testInput}
             onChange={e => {
+
               this.props.InputChanged(e, 1);
             }}
           />

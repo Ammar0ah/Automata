@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Cairo');
-
 body {
     background-color: #2A1B3C;
 }
@@ -30,8 +29,7 @@ body {
     cursor: pointer;
 }
 
-.load-state button:hover,
-.statment button:hover {
+.load-state button:hover, .statment button:hover {
     background-color: rgb(224, 221, 221);
     color: #D93F87;
     box-shadow: 0px 0px 5px 3px rgb(68, 49, 141, 0.5);
@@ -95,6 +93,7 @@ h3::after {
 }
 
 /* Text color adjustments (we could stick to the "inherit" but that does not work well in Safari) */
+
 .bg-1 .button {
     color: #37474f;
     border-color: #37474f;
@@ -111,6 +110,7 @@ h3::after {
 }
 
 /* Sizes */
+
 .button--size-s {
     font-size: 14px;
 }
@@ -124,6 +124,7 @@ h3::after {
 }
 
 /* Typography and Roundedness */
+
 .button--text-upper {
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -154,6 +155,7 @@ h3::after {
 }
 
 /* Borders */
+
 .button--border-thin {
     border: 1px solid;
 }
@@ -167,6 +169,7 @@ h3::after {
 }
 
 /* Nuka */
+
 .button--nuka {
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
@@ -178,8 +181,7 @@ h3::after {
     color: #37474f;
 }
 
-.button--nuka::before,
-.button--nuka::after {
+.button--nuka::before, .button--nuka::after {
     content: '';
     position: absolute;
     border-radius: inherit;
@@ -210,14 +212,12 @@ h3::after {
     transition: transform 0.3s, background-color 0.3s;
 }
 
-.button--nuka::before,
-.button--nuka::after {
+.button--nuka::before, .button--nuka::after {
     -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.button--nuka.button--inverted::before,
-.button--nuka.button--inverted::after {
+.button--nuka.button--inverted::before, .button--nuka.button--inverted::after {
     background: #fff;
 }
 
@@ -238,12 +238,10 @@ h3::after {
     background-color: #7986cb;
 }
 
-.button--nuka:hover::after,
-.button--nuka:hover::before {
+.button--nuka:hover::after, .button--nuka:hover::before {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
 }
-
 
 .notify {
     position: absolute;
@@ -263,7 +261,6 @@ h3::after {
 #notifyType:before {
     display: block;
     margin-top: 15px;
-
 }
 
 .active {
@@ -274,7 +271,6 @@ h3::after {
     Content: "Automata Loaded Successfully";
     font-size: 2rem;
 }
-
 
 .App {
     text-align: center;
@@ -366,8 +362,6 @@ h3::after {
     opacity: 1;
 }
 
-
-
 .checkLabel input[type="checkbox"]:checked~p {
     transition-delay: .5s;
     transform: translateY(0);
@@ -411,39 +405,16 @@ hr {
     color: #fff
 }
 
+input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    right: -16px;
+    top: 0px;
+    width: 258px;
+    height: 105px;
+}
 
-[type="file"] {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute !important;
-    white-space: nowrap;
-    width: 1px;  
-  }
-
-  [type="file"] + label {
-    background-color: #000;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    height: 4rem;
-    line-height: 4rem;
-    padding: 1rem;
-    text-transform: uppercase;
-    transition: background-color 0.3s;
-  }
-   
-  [type="file"]:focus + label,
-  [type="file"] + label:hover {
-      background-color: #f15d22;
-  }
-   
-  .fileinput-container { 
-      display: block;
-      text-align: center;
-  }
+.button--nuka {
+    color: whitesmoke;
+    font-size: 1.5rem;
+}

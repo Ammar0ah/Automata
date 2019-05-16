@@ -36,6 +36,7 @@ class commentAutomata {
     //Gereating q4
     q = new Q();
     q.addq("/", index + 5);
+    q.addq("*", index + 4);
     this.addallToQ(q, index + 2);
     this.arr.push(q);
 

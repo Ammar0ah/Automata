@@ -9,7 +9,7 @@ import { Route, Switch, NavLink } from "react-router-dom";
 import LoadingPage from "./containers/loadingPage";
 import CreatePage from "./containers/createPage";
 import UploadPage from "./containers/uploadPage";
-
+import Draw from "./containers/Graph";
 class App extends Component {
   state = {
     preQs: [],
@@ -19,7 +19,6 @@ class App extends Component {
     Qs: [],
     testInput: "",
     type: "Waiting for You :)",
-    fileName: "Choose a file",
     displayAlert: false,
     upload: false,
     fileType: ""
@@ -45,17 +44,18 @@ class App extends Component {
   };
   check = (current, index, Qs) => {
     let item = Qs[index];
-    let result = [];
+    let result = -1;
     if (item) {
       item.q.forEach(el => {
         if (el.key === current) {
-          result.push(el.value);
+          result = el.value;
         }
       });
     }
     // console.log("res", result, "\n", parseInt(result));
-    if (result) return result;
-    else return -1;
+    // if (result) return result;
+    // else return -1;
+    return result
   };
 
   isBelong = (current, chain, Qs) => {
@@ -70,12 +70,13 @@ class App extends Component {
       } else {
         let ch = String(chain);
         const c = ch.slice(1, ch.length);
-        const resArr = this.check(ch[0], current, Qs);
-        let finalRes = false;
-        for (let index of resArr) {
-          finalRes |= this.isBelong(index, c, Qs);
-        }
-        return finalRes;
+        const res = this.check(ch[0], current, Qs);
+        // let finalRes = false;
+        // for (let index of resArr) {
+        //   finalRes |= this.isBelong(index, c, Qs);
+        // }
+        // return finalRes;
+        return this.isBelong(res, c, Qs);
       }
     }
   };
@@ -103,6 +104,7 @@ class App extends Component {
     comQs.GenerateAutomata(0);
     varQs.GenerateAutomata(0);
     preQs.arr[0].q = [...preQs.arr[0].q, ...Q0.q];
+
     this.setState({
       preQs: [...preQs.arr],
       numQs: [...numQs.arr],
@@ -110,6 +112,7 @@ class App extends Component {
       varQs: [...varQs.arr],
       displayAlert: true
     });
+   
     setTimeout(() => this.setState({ displayAlert: false }), 2000);
   };
 
@@ -136,7 +139,6 @@ class App extends Component {
     });
   };
   fileChanged = event => {
-    this.setState({fileName: event.target.files[0].name})
     var reader = new FileReader();
     reader.onload = this.onReaderLoad;
     reader.readAsText(event.target.files[0]);
@@ -165,6 +167,24 @@ class App extends Component {
   };
 
   render() {
+    let drawType ;
+    switch (this.state.type) {
+      case "This is keyword":
+        drawType = this.state.preQs;
+        break;
+      case "This is Comment":
+        drawType = this.state.comQs;
+        break;
+      case "This is Number":
+        drawType = this.state.numQs;
+        break;
+      case "This is Decleration":
+        drawType = this.state.varQs;
+        break;
+      default:
+        drawType =[];
+    }
+    console.log(drawType)
     return (
       <div>
         <Switch>
@@ -204,7 +224,6 @@ class App extends Component {
                 testInput={this.state.testInput}
                 InputChanged={this.InputChanged}
                 type={this.state.type}
-                name={this.state.fileName}
               />
             )}
           />
@@ -226,6 +245,7 @@ class App extends Component {
             )}
           />
         </Switch>
+          <Draw qs={drawType} />
       </div>
     );
   }

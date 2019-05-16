@@ -8,7 +8,9 @@ Loading Automata from State ,test it and loading the corresponding graph example
 
  Loading a certain Automata from JSON file:
  
-  <img src="images/choose_file.png" width="800" heigth="400">
+  <img src="images/choose_file1.png" width="800" heigth="400">
+  <img src="images/choose_file2.png" width="800" heigth="400">
+  <img src="images/choose_file3.png" width="800" heigth="400">
 
  User Creating Automata statement:
  

@@ -140,7 +140,6 @@ class App extends Component {
     reader.readAsText(event.target.files[0]);
   };
   onReaderLoad = event => {
-    this.setState({ upload: true });
     this.setState({ fileType: JSON.parse(event.target.result).type });
     switch (this.state.fileType) {
       case "comQs":
@@ -156,7 +155,9 @@ class App extends Component {
         this.setState({ varQs: JSON.parse(event.target.result).arr });
         break;
       default:
-        this.setState({ Qs: JSON.parse(event.target.result).arr });
+        this.setState({ Qs: JSON.parse(event.target.result).arr }, () => {
+          this.setState({ upload: true });
+        });
         break;
     }
   };

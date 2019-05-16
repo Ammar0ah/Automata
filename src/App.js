@@ -18,7 +18,9 @@ class App extends Component {
     Qs: [],
     testInput: "",
     type: "Waiting for You :)",
-    displayAlert: false
+    displayAlert: false,
+    upload: false,
+    fileType: ""
   };
   AddQs = () => {
     const newQs = [...this.state.Qs];
@@ -131,16 +133,29 @@ class App extends Component {
       this.setState({ type: type });
     });
   };
-  fileChanged = event => { 
+  fileChanged = event => {
     var reader = new FileReader();
     reader.onload = this.onReaderLoad;
     reader.readAsText(event.target.files[0]);
-  }
-  onReaderLoad = event => { 
-    console.log(event.target.result);
-    var obj = JSON.parse(event.target.result);
-    console.log(obj.name, obj.family);
-  }
+  };
+  onReaderLoad = event => {
+    console.log(JSON.parse(event.target.result));
+    this.setState({ fileType: JSON.parse(event.target.result).type });
+    switch (this.state.fileType) {
+      case "comQs":
+        this.setState({ comQs: JSON.parse(event.target.result).arr });
+        break;
+      case "numQs":
+        this.setState({ numQs: JSON.parse(event.target.result).arr });
+        break;
+      case "preQs":
+        this.setState({ preQs: JSON.parse(event.target.result).arr });
+        break;
+      case "varQs":
+        this.setState({ varQs: JSON.parse(event.target.result).arr });
+        break;
+    }
+  };
 
   render() {
     return (

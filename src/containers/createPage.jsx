@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Statement from "./Statement";
+import Statement from "../components/Statement";
 class CreatePage extends Component {
   render() {
     let St = this.props.Qs.map((_, i) => (

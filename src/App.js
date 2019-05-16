@@ -6,8 +6,8 @@ import commentAutomata from "./Models/commentAutomata";
 import VariableAutomata from "./Models/VariableAutomata";
 import Q from "./Models/Q";
 import { Route, Switch, NavLink } from "react-router-dom";
-import LoadingPage from "./Models/loadingPage";
-import CreatePage from "./Models/createPage";
+import LoadingPage from "./containers/loadingPage";
+import CreatePage from "./containers/createPage";
 
 class App extends Component {
   state = {
@@ -131,6 +131,16 @@ class App extends Component {
       this.setState({ type: type });
     });
   };
+  fileChanged = event => { 
+    var reader = new FileReader();
+    reader.onload = this.onReaderLoad;
+    reader.readAsText(event.target.files[0]);
+  }
+  onReaderLoad = event => { 
+    console.log(event.target.result);
+    var obj = JSON.parse(event.target.result);
+    console.log(obj.name, obj.family);
+  }
 
   render() {
     return (
